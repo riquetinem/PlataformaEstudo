@@ -1,0 +1,36 @@
+/// @description Insert description here
+// You can write your code in this editor
+
+
+velv += grav;
+
+if (moment == "off") {
+	sprite_index = spr_bomb;
+} else if (moment == "on") {
+	sprite_index = spr_bomb_on;
+	
+	if (timerBoom > 0) {
+		timerBoom--;
+	} else {
+		moment = "boom";
+	}
+} else {
+	if (sprite_index != spr_bomb_boom) {
+		sprite_index = spr_bomb_boom;
+		image_index = 0;
+	}
+	
+	if (image_index >= image_number - 1)
+		instance_destroy();
+		
+	var _player = instance_place(x, y, obj_player);
+	
+	if (_player) {
+		with(_player){
+			timerHit = _timerHit;
+			timerInv = _timerInv;
+			hit = true;
+		}
+	}
+}
+

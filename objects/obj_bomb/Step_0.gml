@@ -4,15 +4,15 @@
 
 velv += grav;
 
-if (moment == "off") {
+if (state == "off") {
 	sprite_index = spr_bomb;
-} else if (moment == "on") {
+} else if (state == "on") {
 	sprite_index = spr_bomb_on;
 	
 	if (timerBoom > 0) {
 		timerBoom--;
 	} else {
-		moment = "boom";
+		state = "boom";
 	}
 } else {
 	if (sprite_index != spr_bomb_boom) {
@@ -32,5 +32,13 @@ if (moment == "off") {
 			hit = true;
 		}
 	}
+	
+	var _bomb = instance_place(x, y, obj_bomb);
+	
+	if (_bomb) {
+		if (_bomb.state == "off") {
+			_bomb.timerBoom = room_speed;
+			_bomb.state = "on";
+		}
+	}
 }
-

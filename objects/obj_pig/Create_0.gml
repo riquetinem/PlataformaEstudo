@@ -3,6 +3,8 @@
 event_inherited();
 
 vel = choose(1, -1);
+state = "normal";
+
 walking = choose(true, false);
 timeToWalk = room_speed * 3;
 
